@@ -1,0 +1,6 @@
+applicationType: default
+defaultPackage: dev.viniciusrangel.terrariacontrolpanel
+testFramework: kotlintest
+sourceLanguage: kotlin
+buildTool: gradle
+features: [annotation-api, app-name, docker, graalvm, gradle, http-client, kotlin, kotlin-application, kotlin-extension-functions, kotlintest, log4j2, netty-server, properties, readme, security-jwt, shade]

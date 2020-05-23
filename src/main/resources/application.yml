@@ -1,0 +1,60 @@
+#Thu May 21 16:01:26 GMT 2020
+micronaut:
+  application:
+    name: 'terrariaControlPanel'
+  server:
+    port: 8080
+    cors:
+      enabled: true
+      configurations:
+        web:
+          allowedOrigins:
+            - ^http://localhost:8687
+  session:
+    http:
+      cookie-path: /
+  router:
+    static-resources:
+      default:
+        enabled: true
+        mapping: '/**'
+        paths: 'classpath:public'
+  security:
+    enable: true
+    endpoints:
+      login:
+        enabled: true
+    session:
+      login-success-target-url: /
+      login-failure-target-url: /login.html
+      unauthorized-target-url: /login.html
+    interceptUrlMap:
+      - pattern: "/login.html"
+        httpMethod: GET
+        access:
+          - isAnonymous()
+      - pattern: "/**"
+        httpMethod: GET
+        access:
+          - isAuthenticated()
+endpoints:
+  routes:
+    enabled: true
+    sensitive: false
+  health:
+    enabled: true
+    disk-space:
+      enabled: true
+    details-visible: authenticated
+
+terraria:
+  auth:
+    path: 'auth.csv'
+  server:
+    path: '"D:\Program Files (x86)\Steam\steamapps\common\tModLoader\tModLoaderServer.exe"'
+    port: 7777
+    maxPlayers: 8
+    password: ''
+    world: ''
+    autocreate: 1
+    expert: false
